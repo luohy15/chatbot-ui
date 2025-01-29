@@ -66,6 +66,7 @@ export const useChatHandler = () => {
     models,
     isPromptPickerOpen,
     isFilePickerOpen,
+    isWebSearchEnabled,
     isToolPickerOpen
   } = useContext(ChatbotUIContext)
 
@@ -108,6 +109,7 @@ export const useChatHandler = () => {
         includeProfileContext: selectedAssistant.include_profile_context,
         includeWorkspaceInstructions:
           selectedAssistant.include_workspace_instructions,
+        isWebSearchEnabled: isWebSearchEnabled,
         embeddingsProvider: selectedAssistant.embeddings_provider as
           | "openai"
           | "local"
@@ -152,6 +154,7 @@ export const useChatHandler = () => {
         includeProfileContext: selectedPreset.include_profile_context,
         includeWorkspaceInstructions:
           selectedPreset.include_workspace_instructions,
+        isWebSearchEnabled: isWebSearchEnabled,
         embeddingsProvider: selectedPreset.embeddings_provider as
           | "openai"
           | "local"

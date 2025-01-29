@@ -88,6 +88,8 @@ interface ChatbotUIContext {
   setIsGenerating: Dispatch<SetStateAction<boolean>>
 
   // CHAT INPUT COMMAND STORE
+  isWebSearchEnabled: boolean
+  setIsWebSearchEnabled: Dispatch<SetStateAction<boolean>>
   isPromptPickerOpen: boolean
   setIsPromptPickerOpen: Dispatch<SetStateAction<boolean>>
   slashCommand: string
@@ -214,6 +216,12 @@ export const ChatbotUIContext = createContext<ChatbotUIContext>({
   setAbortController: () => {},
 
   // CHAT INPUT COMMAND STORE
+  isWebSearchEnabled: typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('chatbot_web_search_enabled') || 'false') : false,
+  setIsWebSearchEnabled: () => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('chatbot_web_search_enabled', 'false')
+    }
+  },
   isPromptPickerOpen: false,
   setIsPromptPickerOpen: () => {},
   slashCommand: "",

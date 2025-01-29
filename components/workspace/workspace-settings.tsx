@@ -37,6 +37,7 @@ export const WorkspaceSettings: FC<WorkspaceSettingsProps> = ({}) => {
     setSelectedWorkspace,
     setWorkspaces,
     setChatSettings,
+    isWebSearchEnabled,
     workspaceImages,
     setWorkspaceImages
   } = useContext(ChatbotUIContext)
@@ -135,6 +136,7 @@ export const WorkspaceSettings: FC<WorkspaceSettingsProps> = ({}) => {
         includeProfileContext: defaultChatSettings.includeProfileContext,
         includeWorkspaceInstructions:
           defaultChatSettings.includeWorkspaceInstructions,
+        isWebSearchEnabled: isWebSearchEnabled,
         embeddingsProvider: defaultChatSettings.embeddingsProvider as
           | "openai"
           | "local"

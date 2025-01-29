@@ -42,6 +42,7 @@ export const QuickSettings: FC<QuickSettingsProps> = ({}) => {
     setChatFiles,
     setSelectedTools,
     setShowFilesDisplay,
+    isWebSearchEnabled,
     selectedWorkspace
   } = useContext(ChatbotUIContext)
 
@@ -111,6 +112,7 @@ export const QuickSettings: FC<QuickSettingsProps> = ({}) => {
           temperature: selectedWorkspace.default_temperature,
           contextLength: selectedWorkspace.default_context_length,
           includeProfileContext: selectedWorkspace.include_profile_context,
+          isWebSearchEnabled: isWebSearchEnabled,
           includeWorkspaceInstructions:
             selectedWorkspace.include_workspace_instructions,
           embeddingsProvider: selectedWorkspace.embeddings_provider as
@@ -128,6 +130,7 @@ export const QuickSettings: FC<QuickSettingsProps> = ({}) => {
       contextLength: item.context_length,
       includeProfileContext: item.include_profile_context,
       includeWorkspaceInstructions: item.include_workspace_instructions,
+      isWebSearchEnabled: isWebSearchEnabled,
       embeddingsProvider: item.embeddings_provider as "openai" | "local"
     })
   }

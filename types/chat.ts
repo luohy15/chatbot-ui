@@ -8,6 +8,7 @@ export interface ChatSettings {
   contextLength: number
   includeProfileContext: boolean
   includeWorkspaceInstructions: boolean
+  isWebSearchEnabled: boolean
   embeddingsProvider: "openai" | "local"
 }
 

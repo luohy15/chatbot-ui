@@ -24,8 +24,13 @@ export async function POST(request: Request) {
       baseURL: profile.openrouter_base_url || "https://openrouter.ai/api/v1"
     })
 
+    let model = chatSettings.model
+    if (chatSettings.isWebSearchEnabled) {
+      model += ":online"
+    }
+
     const response = await openai.chat.completions.create({
-      model: chatSettings.model as ChatCompletionCreateParamsBase["model"],
+      model: model as ChatCompletionCreateParamsBase["model"],
       messages: messages as ChatCompletionCreateParamsBase["messages"],
       temperature: chatSettings.temperature,
       max_tokens: undefined,

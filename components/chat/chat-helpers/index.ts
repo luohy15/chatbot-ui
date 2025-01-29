@@ -364,6 +364,7 @@ export const handleCreateChat = async (
     context_length: chatSettings.contextLength,
     include_profile_context: chatSettings.includeProfileContext,
     include_workspace_instructions: chatSettings.includeWorkspaceInstructions,
+    is_web_search_enabled: chatSettings.isWebSearchEnabled,
     model: chatSettings.model,
     name: messageContent.substring(0, 100),
     prompt: chatSettings.prompt,

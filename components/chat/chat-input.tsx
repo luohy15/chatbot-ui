@@ -8,6 +8,7 @@ import {
   IconPlayerStopFilled,
   IconSend
 } from "@tabler/icons-react"
+import { Switch } from "../ui/switch"
 import Image from "next/image"
 import { FC, useContext, useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
@@ -54,7 +55,9 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
     chatSettings,
     selectedTools,
     setSelectedTools,
-    assistantImages
+    assistantImages,
+    isWebSearchEnabled,
+    setIsWebSearchEnabled
   } = useContext(ChatbotUIContext)
 
   const {
@@ -217,11 +220,17 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
         </div>
 
         <>
-          <IconCirclePlus
-            className="absolute bottom-[12px] left-3 cursor-pointer p-1 hover:opacity-50"
-            size={32}
-            onClick={() => fileInputRef.current?.click()}
-          />
+          <div className="flex items-center absolute bottom-[12px] left-3 space-x-2">
+            <IconCirclePlus
+              className="cursor-pointer p-1 hover:opacity-50"
+              size={32}
+              onClick={() => fileInputRef.current?.click()}
+            />
+            <Switch
+              checked={isWebSearchEnabled}
+              onCheckedChange={setIsWebSearchEnabled}
+            />
+          </div>
 
           {/* Hidden input to select files from device */}
           <Input
@@ -238,7 +247,7 @@ export const ChatInput: FC<ChatInputProps> = ({}) => {
 
         <TextareaAutosize
           textareaRef={chatInputRef}
-          className="ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring text-md flex w-full resize-none rounded-md border-none bg-transparent px-14 py-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+          className="ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring text-md flex w-full resize-none rounded-md border-none bg-transparent pl-24 ml-2 pr-14 py-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
           placeholder={t(
             // `Ask anything. Type "@" for assistants, "/" for prompts, "#" for files, and "!" for tools.`
             `Ask anything. Type @  /  #  !`

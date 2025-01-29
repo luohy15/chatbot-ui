@@ -38,6 +38,7 @@ export const ChatUI: FC<ChatUIProps> = ({}) => {
     setChatFiles,
     setShowFilesDisplay,
     setUseRetrieval,
+    isWebSearchEnabled,
     setSelectedTools
   } = useContext(ChatbotUIContext)
 
@@ -177,6 +178,7 @@ export const ChatUI: FC<ChatUIProps> = ({}) => {
       contextLength: chat.context_length,
       includeProfileContext: chat.include_profile_context,
       includeWorkspaceInstructions: chat.include_workspace_instructions,
+      isWebSearchEnabled: isWebSearchEnabled,
       embeddingsProvider: chat.embeddings_provider as "openai" | "local"
     })
   }

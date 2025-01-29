@@ -75,6 +75,24 @@ export const GlobalState: FC<GlobalStateProps> = ({ children }) => {
 
   // PASSIVE CHAT STORE
   const [userInput, setUserInput] = useState<string>("")
+  const [isWebSearchEnabled, setIsWebSearchEnabled] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('isWebSearchEnabled')
+      return saved ? JSON.parse(saved) : false
+    }
+    return false
+  })
+
+  // Save isWebSearchEnabled to localStorage and update chatSettings whenever it changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('isWebSearchEnabled', JSON.stringify(isWebSearchEnabled))
+      setChatSettings(prev => ({
+        ...prev,
+        isWebSearchEnabled
+      }))
+    }
+  }, [isWebSearchEnabled])
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
   const [chatSettings, setChatSettings] = useState<ChatSettings>({
     model: "gpt-4-turbo-preview",
@@ -83,6 +101,7 @@ export const GlobalState: FC<GlobalStateProps> = ({ children }) => {
     contextLength: 4000,
     includeProfileContext: true,
     includeWorkspaceInstructions: true,
+    isWebSearchEnabled: isWebSearchEnabled,
     embeddingsProvider: "openai"
   })
   const [selectedChat, setSelectedChat] = useState<Tables<"chats"> | null>(null)
@@ -265,6 +284,8 @@ export const GlobalState: FC<GlobalStateProps> = ({ children }) => {
         setSelectedChat,
         chatFileItems,
         setChatFileItems,
+        isWebSearchEnabled,
+        setIsWebSearchEnabled,
 
         // ACTIVE CHAT STORE
         isGenerating,

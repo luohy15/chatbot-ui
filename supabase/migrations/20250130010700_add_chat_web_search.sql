@@ -1,0 +1,1 @@
+ALTER TABLE chats ADD COLUMN is_web_search_enabled BOOLEAN DEFAULT FALSE;

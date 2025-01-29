@@ -26,6 +26,7 @@ export const usePromptAndCommand = () => {
     setIsAssistantPickerOpen,
     setSelectedAssistant,
     setChatSettings,
+    isWebSearchEnabled,
     setChatFiles
   } = useContext(ChatbotUIContext)
 
@@ -146,6 +147,7 @@ export const usePromptAndCommand = () => {
       contextLength: assistant.context_length,
       includeProfileContext: assistant.include_profile_context,
       includeWorkspaceInstructions: assistant.include_workspace_instructions,
+      isWebSearchEnabled: isWebSearchEnabled,
       embeddingsProvider: assistant.embeddings_provider as "openai" | "local"
     })
 

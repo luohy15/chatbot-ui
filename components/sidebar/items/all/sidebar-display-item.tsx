@@ -48,6 +48,7 @@ export const SidebarItem: FC<SidebarItemProps> = ({
         assistant_id: assistant.id,
         context_length: assistant.context_length,
         include_profile_context: assistant.include_profile_context,
+        is_web_search_enabled: false,
         include_workspace_instructions:
           assistant.include_workspace_instructions,
         model: assistant.model,

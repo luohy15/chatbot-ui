@@ -346,6 +346,7 @@ export type Database = {
           id: string
           include_profile_context: boolean
           include_workspace_instructions: boolean
+          is_web_search_enabled: boolean
           model: string
           name: string
           prompt: string
@@ -364,6 +365,7 @@ export type Database = {
           id?: string
           include_profile_context: boolean
           include_workspace_instructions: boolean
+          is_web_search_enabled: boolean
           model: string
           name: string
           prompt: string
@@ -1409,6 +1411,7 @@ export type Database = {
           image_path: string
           include_profile_context: boolean
           include_workspace_instructions: boolean
+          is_web_search_enabled: boolean
           instructions: string
           is_home: boolean
           name: string
