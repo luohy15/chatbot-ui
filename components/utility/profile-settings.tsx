@@ -118,6 +118,10 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
     profile?.openrouter_api_key || ""
   )
 
+  const [openrouterBaseUrl, setOpenrouterBaseUrl] = useState(
+    profile?.openrouter_api_key || ""
+  )
+
   const handleSignOut = async () => {
     await supabase.auth.signOut()
     router.push("/login")
@@ -157,6 +161,7 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
       azure_openai_45_turbo_id: azureOpenai45TurboID,
       azure_openai_45_vision_id: azureOpenai45VisionID,
       azure_openai_embeddings_id: azureEmbeddingsID,
+      openrouter_base_url: openrouterBaseUrl,
       openrouter_api_key: openrouterAPIKey
     })
 
@@ -719,6 +724,22 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
                       type="password"
                       value={openrouterAPIKey}
                       onChange={e => setOpenrouterAPIKey(e.target.value)}
+                    />
+                  </>
+                )}
+              </div>
+
+              <div className="space-y-1">
+                {envKeyMap["openrouter_base_url"] ? (
+                  <Label>OpenRouter Base Url set by admin.</Label>
+                ) : (
+                  <>
+                    <Label>OpenRouter Base Url</Label>
+                    <Input
+                      placeholder="OpenRouter Base Url"
+                      type="text"
+                      value={openrouterBaseUrl}
+                      onChange={e => setOpenrouterBaseUrl(e.target.value)}
                     />
                   </>
                 )}
