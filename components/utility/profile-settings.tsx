@@ -119,7 +119,7 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
   )
 
   const [openrouterBaseUrl, setOpenrouterBaseUrl] = useState(
-    profile?.openrouter_api_key || ""
+    profile?.openrouter_base_url || ""
   )
 
   const handleSignOut = async () => {
